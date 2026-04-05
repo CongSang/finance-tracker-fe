@@ -1,6 +1,6 @@
 'use client'
 
-import { Eye, Pencil, Trash2 } from 'lucide-react';
+import { Pencil, Trash2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { formatDisplay } from '@/lib/index';
 
@@ -20,7 +20,7 @@ export const WalletCard = ({ title, balance, color, ref, onEdit, onDelete }: Wal
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
       ref={ref}
-      className="group bg-white border border-gray-100 rounded-lg p-6 shadow hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
+      className="group bg-white rounded-xl p-6 shadow hover:shadow-lg transition-all duration-300"
     >
       <div className="flex justify-between items-start mb-6">
         <div 
@@ -29,13 +29,13 @@ export const WalletCard = ({ title, balance, color, ref, onEdit, onDelete }: Wal
         </div>
         
         <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-          <button onClick={onEdit} className="p-1.5 hover:bg-gray-50 rounded text-on-surface-variant transition-colors">
+          <button onClick={onEdit} className="p-2 hover:bg-gray-50 text-gray-500 hover:text-primary rounded-full transition-colors">
             <Pencil size={14} />
           </button>
-          {/* <button className="p-1.5 hover:bg-gray-50 rounded text-on-surface-variant transition-colors">
+          {/* <button className="p-2 hover:bg-gray-50 rounded text-on-surface-variant transition-colors">
             <Eye size={14} />
           </button> */}
-          <button onClick={onDelete} className="p-1.5 hover:bg-red-50 text-red-500 rounded transition-colors">
+          <button onClick={onDelete} className="p-2 hover:bg-red-50 text-gray-500 hover:text-red-600 rounded-full transition-colors">
             <Trash2 size={14} />
           </button>
         </div>

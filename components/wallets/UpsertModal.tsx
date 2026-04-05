@@ -52,6 +52,7 @@ export const UpsertModal = ({ title, subtitle, isOpen, isEditing = false, initDa
 		setLoading(true)
     try {
       await onSubmit({ ...wallet, balance: Number(wallet.balance) })
+      toast.success(isEditing ? 'Cập nhật ví thành công' : 'Thêm mới ví thành công')
       onClose()
     } catch (error) {
       console.error('Lỗi khi tạo/ sửa ví:', error)

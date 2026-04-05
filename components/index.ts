@@ -9,6 +9,9 @@ export * from './LayoutModalPopup'
 export * from './Loading'
 export * from './ConfirmDelete'
 
+export * from './categories/CategoryCard'
+export * from './categories/UpsertCatModal'
+
 export * from './wallets/WalletCard'
 export * from './wallets/UpsertModal'
 export * from './wallets/TransferModal'

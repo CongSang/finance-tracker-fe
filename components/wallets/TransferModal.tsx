@@ -63,7 +63,6 @@ export const TransferModal = ({ isOpen, onClose, title }: TransferModalProps) =>
           value={amount}
           disabled={loading}
           onChange={(e) => setAmount(e.target.value)}
-          setValue={(val) => setAmount(val)}
           label="Số tiền" 
           placeholder="0.00" 
           type="number" 

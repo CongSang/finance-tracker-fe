@@ -9,7 +9,7 @@ interface InputProps {
   name?: string;
   label: string;
   value: string;
-  placeholder: string;
+  placeholder?: string;
   type?: string;
   disabled?: boolean;
   isSelect?: boolean;
