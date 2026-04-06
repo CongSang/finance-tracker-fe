@@ -65,6 +65,7 @@ export const Input = ({ name, label, value, placeholder, type = "text", disabled
                   value={value}
                   onChange={(e) => onChange(e)}
                 >
+                  <option value="">{placeholder}</option>
                   {options?.map((item) => (
                       <option key={item.value} value={item.value}>{item.label}</option>
                   ))}

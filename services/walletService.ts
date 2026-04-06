@@ -25,3 +25,13 @@ export const deleteWalletApi = async (id: number) => {
   const response = await axiosClient.delete(`/wallets/${id}`);
   return response.data;
 };
+
+export const getWalletDropdownApi = async () => {
+  const response = await axiosClient.get('/wallets/dropdown');
+  return response.data;
+};
+
+export const transferApi = async (request: unknown) => {
+  const response = await axiosClient.post('/transfer', request);
+  return response.data;
+};

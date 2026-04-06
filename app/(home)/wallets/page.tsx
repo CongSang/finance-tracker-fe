@@ -124,6 +124,25 @@ const Wallets = () => {
     });
   };
 
+  const onTransferWallet = (fromWalletId: number, toWalletId: number, amount: number) => {
+    setData((prevData) => {
+      if (!prevData) return null;
+
+      return {
+        ...prevData,
+        content: prevData.content.map((item) => {
+          if(item.id === fromWalletId) {
+            return { ...item, balance: item.balance - amount };
+          } else if (item.id === toWalletId) {
+            return { ...item, balance: item.balance + amount };
+          }
+            
+          return item;
+        }),
+      };
+    });
+  } 
+
   useEffect(() => {
     if (request.page > 0) {
       fetchWallets(true);
@@ -235,7 +254,8 @@ const Wallets = () => {
 
       <TransferModal 
         isOpen={isTransferOpen} 
-        onClose={() => setIsTransferOpen(false)} 
+        onTransfer={(fromWalletId: number, toWalletId: number, amount: number) => onTransferWallet(fromWalletId, toWalletId, amount)} 
+        onClose={() => setIsTransferOpen(false)}
         title="Chuyển Khoản Nội Bộ"
       />
     </div>
