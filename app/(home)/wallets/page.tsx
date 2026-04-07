@@ -182,6 +182,7 @@ const Wallets = () => {
             if (data.content.length === index + 1) {
               return  <WalletCard 
                         ref={lastElementRef}
+                        id={wallet.id!}
                         key={wallet.id}
                         title={wallet.name}
                         balance={wallet.balance}
@@ -198,6 +199,7 @@ const Wallets = () => {
             }
             return  <WalletCard 
                       key={wallet.id}
+                      id={wallet.id!}
                       title={wallet.name}
                       balance={wallet.balance} 
                       color={wallet.colorCode}

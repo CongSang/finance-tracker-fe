@@ -1,11 +1,13 @@
 'use client'
 
-import { Pencil, Trash2 } from 'lucide-react';
+import { Eye, Pencil, Trash2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { formatDisplay } from '@/lib/index';
+import { useRouter } from 'next/navigation';
 
 interface WalletCardProps {
     ref?: React.Ref<HTMLDivElement>;
+    id: number;
     title: string;
     balance: number;
     color: string;
@@ -14,7 +16,13 @@ interface WalletCardProps {
 }
 
 
-export const WalletCard = ({ title, balance, color, ref, onEdit, onDelete }: WalletCardProps) => {
+export const WalletCard = ({ id, title, balance, color, ref, onEdit, onDelete }: WalletCardProps) => {
+  const router = useRouter()
+
+  const onClickTransition = () => {
+    router.push(`/transactions?walletId=${id}`)
+  }
+
   return (
     <motion.div 
       whileHover={{ y: -4 }}
@@ -32,9 +40,9 @@ export const WalletCard = ({ title, balance, color, ref, onEdit, onDelete }: Wal
           <button onClick={onEdit} className="p-2 hover:bg-gray-50 text-gray-500 hover:text-primary rounded-full transition-colors">
             <Pencil size={14} />
           </button>
-          {/* <button className="p-2 hover:bg-gray-50 rounded text-on-surface-variant transition-colors">
+          <button onClick={onClickTransition} className="p-2 hover:bg-gray-50 rounded text-gray-500 transition-colors">
             <Eye size={14} />
-          </button> */}
+          </button>
           <button onClick={onDelete} className="p-2 hover:bg-red-50 text-gray-500 hover:text-red-600 rounded-full transition-colors">
             <Trash2 size={14} />
           </button>

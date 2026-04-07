@@ -17,3 +17,7 @@ export * from './wallets/UpsertModal'
 export * from './wallets/TransferModal'
 
 export * from './dashboard/SummaryCard'
+
+export * from './transactions/TransactionList'
+export * from './transactions/TransactionRow'
+export * from './transactions/UpsertTransactionModal'

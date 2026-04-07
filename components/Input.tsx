@@ -7,8 +7,9 @@ import { cleanAmount, formatDisplay } from '@/lib/index';
 
 interface InputProps {
   name?: string;
-  label: string;
-  value: string;
+  label?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  value: any;
   placeholder?: string;
   type?: string;
   disabled?: boolean;
@@ -62,7 +63,7 @@ export const Input = ({ name, label, value, placeholder, type = "text", disabled
                   name={name}
                   disabled={disabled}
                   className={twMerge("w-full px-4 py-3 rounded-lg border border-third focus:outline-none focus:ring-2 focus:ring-primary/5 focus:border-primary transition-all placeholder:text-third", inputClass)}
-                  value={value}
+                  value={value ?? ""}
                   onChange={(e) => onChange(e)}
                 >
                   <option value="">{placeholder}</option>
@@ -86,7 +87,7 @@ export const Input = ({ name, label, value, placeholder, type = "text", disabled
                   name={name}
                   disabled={disabled}
                   type={type === "password" ? (showPassword ? "text" : "password") : type}
-                  value={value}
+                  value={value ?? ""}
                   onChange={(e) => onChange(e)}
                   placeholder={placeholder}
                   className={twMerge("w-full px-4 py-3 rounded-lg border border-third focus:outline-none focus:ring-2 focus:ring-primary/5 focus:border-primary transition-all placeholder:text-third", inputClass)}

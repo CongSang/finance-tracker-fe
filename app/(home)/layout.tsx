@@ -31,7 +31,7 @@ const HomeLayout = (props: LayoutProps) => {
         <SideBar />
       </div>
 
-      <div className='grow'>
+      <div className='grow overflow-hidden'>
         <Header onOpenSidebar={() => setOpenSidebar(true)} />
         <main className='min-h-[80vh] p-4 md:p-8 overflow-y-auto'>
           {props.children}

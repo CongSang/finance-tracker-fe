@@ -124,6 +124,7 @@ const Categories = () => {
           {filteredCategories.map((cat) => (
             <CategoryCard 
               key={cat.id} 
+              id={cat.id!}
               icon={cat.iconUrl}
               title={cat.name}
               type={cat.type}
