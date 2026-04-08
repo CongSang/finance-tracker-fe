@@ -62,14 +62,14 @@ const Categories = () => {
   }
 
   const onDeleteCategory = async (catId: number) => {
-      await deleteCategoryApi(catId);
-  
-      setData((prevData) => {
-        if (!prevData) return null;
-  
-        return  prevData.filter((item) => item.id !== catId)
-      });
-    };
+    await deleteCategoryApi(catId);
+
+    setData((prevData) => {
+      if (!prevData) return null;
+
+      return  prevData.filter((item) => item.id !== catId)
+    });
+  };
 
   useEffect(() => {
     fetchCategories()

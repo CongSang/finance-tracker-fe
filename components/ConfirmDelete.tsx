@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { LayoutModalPopup } from '@/components/index'
 import { AlertTriangle } from 'lucide-react';
 import { toastError } from '@/lib/index';
+import toast from 'react-hot-toast';
 
 interface ConfirmDeleteProps {
   isOpen: boolean;
@@ -18,6 +19,7 @@ export const ConfirmDelete = ({ isOpen, onClose, title, message, onDelete } : Co
     setLoading(true)
     try {
       await onDelete()
+      toast.success("Xóa thành công")
       onClose()
     } catch (error) {
       console.error('Lỗi khi xóa:', error)

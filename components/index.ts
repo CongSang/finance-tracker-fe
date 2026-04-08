@@ -11,6 +11,7 @@ export * from './ConfirmDelete'
 
 export * from './categories/CategoryCard'
 export * from './categories/UpsertCatModal'
+export * from './categories/CategoryIcon'
 
 export * from './wallets/WalletCard'
 export * from './wallets/UpsertModal'
@@ -21,3 +22,6 @@ export * from './dashboard/SummaryCard'
 export * from './transactions/TransactionList'
 export * from './transactions/TransactionRow'
 export * from './transactions/UpsertTransactionModal'
+
+export * from './budgets/BudgetCard'
+export * from './budgets/UpsertBudgetModal'
