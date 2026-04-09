@@ -1,4 +1,4 @@
-import { Category, Wallet } from "@/types/index"
+import { BudgetAnalysis, Category, Wallet } from "@/types/index"
 
 export interface Transaction {
   id: number
@@ -8,7 +8,7 @@ export interface Transaction {
   transferId: number
   wallet: Wallet
   category: Category
-  warning: string
+  warning: BudgetAnalysis | null
 }
 
 export interface TransactionRequest {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { cn } from '../../lib/utils'
+import { cn, formatDisplay } from '../../lib/utils'
 import { LucideIcon } from 'lucide-react';
 
 interface SummaryCardProps {
@@ -7,13 +7,14 @@ interface SummaryCardProps {
 	value: string | number;
 	icon: LucideIcon;
 	subtext?: string;
+  isPercent?: boolean
 	color?: "primary" | "error" | "success";
 }
 
 
-export const SummaryCard = ({ title, value, icon: Icon, subtext, color = "primary" }: SummaryCardProps) => {
+export const SummaryCard = ({ title, value, icon: Icon, subtext, color = "primary", isPercent = false }: SummaryCardProps) => {
   return (
-		<div className="bg-white p-6 rounded-2xl shadow flex flex-col justify-between h-28 md:h-40">
+		<div className="bg-white p-6 rounded-xl shadow flex flex-col justify-between h-28 md:h-40">
 			<div className="flex justify-between items-start">
 				<p className="text-[10px] md:text-xs font-bold uppercase tracking-widest">
 					{title}
@@ -23,7 +24,7 @@ export const SummaryCard = ({ title, value, icon: Icon, subtext, color = "primar
 
 
 			<h1 className="font-extrabold text-primary tracking-tight">
-				{value}
+				{!isPercent ? formatDisplay(value.toString()) : `${value}%`}
 			</h1>
 
 			<div className="mt-2">

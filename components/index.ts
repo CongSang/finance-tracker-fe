@@ -18,10 +18,14 @@ export * from './wallets/UpsertModal'
 export * from './wallets/TransferModal'
 
 export * from './dashboard/SummaryCard'
+export * from './dashboard/CashFlowChart'
+export * from './dashboard/ExpenseChart'
 
 export * from './transactions/TransactionList'
 export * from './transactions/TransactionRow'
 export * from './transactions/UpsertTransactionModal'
+export * from './transactions/WarningModal'
+export * from './transactions/InvoiceScanner'
 
 export * from './budgets/BudgetCard'
 export * from './budgets/UpsertBudgetModal'

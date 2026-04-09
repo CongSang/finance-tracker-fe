@@ -69,28 +69,28 @@ export const UpsertTransactionModal = ({
 	}
 
   useEffect(() => {
-    if (isOpen) {
-      if (isEditing && initData) {
-        setTransaction({
-          id: initData.id,
-          amount: initData.amount,
-          transactionDate: formatDateTimeLocal(new Date(initData.transactionDate)),
-          note: initData.note,
-          categoryId: initData.category.id || null,
-          walletId: initData.wallet.id || null
-        });
-      } else {
-        setTransaction({
-          id: null,
-          amount: null,
-          transactionDate: null,
-          note: "",
-          categoryId: null,
-          walletId: null
-        });
+      if (isOpen) {
+        if (initData) {
+          setTransaction({
+            id: initData?.id,
+            amount: initData?.amount,
+            transactionDate: initData.transactionDate ? formatDateTimeLocal(new Date(initData?.transactionDate)) : null,
+            note: initData?.note,
+            categoryId: initData?.category?.id || null,
+            walletId: initData?.wallet?.id || null
+          });
+        } else {
+          setTransaction({
+            id: null,
+            amount: null,
+            transactionDate: null,
+            note: "",
+            categoryId: null,
+            walletId: null
+          });
+        }
       }
-    }
-  }, [isOpen, isEditing, initData])
+    }, [isOpen, initData])
   
   return (
     <LayoutModalPopup isOpen={isOpen} onClose={onClose} title={title} subtitle={subtitle}>

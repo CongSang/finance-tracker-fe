@@ -8,7 +8,6 @@ import { toastError } from '@/lib/utils'
 import { copyBudgetApi, deleteBudgetApi, getBudgetProgressApi, upsertBudgetApi } from '@/services/index'
 import { BudgetAnalysis, BudgetFilter, BudgetRequest } from '@/types/index'
 import { Copy, Plus } from 'lucide-react'
-import { motion } from 'motion/react'
 import { useCallback, useEffect, useState } from 'react'
 
 const Budgets = () => {

@@ -1,5 +1,6 @@
 import { axiosClient } from "@/lib/index";
-import { PageRequest, Transaction, TransactionFilter, TransactionRequest } from "@/types/index";
+import { PageRequest, TransactionFilter, TransactionRequest } from "@/types/index";
+import axios from "axios";
 
 export const getTransactionsApi = async (request: PageRequest, params: TransactionFilter) => {
   const response = await axiosClient.post('/transactions', request, { params });
@@ -23,5 +24,14 @@ export const updateTransactionApi = async (id: number, request: TransactionReque
 
 export const deleteTransactionApi = async (id: number) => {
   const response = await axiosClient.delete(`/transactions/${id}`);
+  return response.data;
+};
+
+export const scanInvoiceApi = async (file: FormData) => {
+  const response = await axiosClient.post(`/transactions/scan`, file, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
   return response.data;
 };

@@ -1,13 +1,14 @@
 'use client'
 
-import { ConfirmDelete, Empty, Input, TransactionList } from '@/components/index'
+import { ConfirmDelete, Empty, Input, TransactionList, WarningModal } from '@/components/index'
 import { Plus, Search } from 'lucide-react'
-import { Category, PageRequest, PageResponse, Transaction, TransactionFilter, TransactionRequest, Wallet } from '@/types/index'
+import { BudgetAnalysis, Category, PageRequest, PageResponse, Transaction, TransactionFilter, TransactionRequest, Wallet } from '@/types/index'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
 import { createTransactionApi, deleteTransactionApi, getCategoriesApi, getTransactionsApi, getWalletDropdownApi, updateTransactionApi } from '@/services/index'
 import { cleanObject, formatDisplay, toastError } from '@/lib/index'
 import { UpsertTransactionModal } from '@/components/index'
+import InvoiceScanner from '@/components/transactions/InvoiceScanner';
 
 const Transactions = () => {
   const router = useRouter();
@@ -15,6 +16,10 @@ const Transactions = () => {
   const searchParams = useSearchParams();
   const [isAddOpen, setIsAddOpen] = useState(false)
   const [isEditOpen, setIsEditOpen] = useState(false)
+  const [warning, setWarning] = useState<{ isOpen: boolean, budget: BudgetAnalysis | null }>({
+    isOpen: false,
+    budget: null
+  })
   const [isConfirmOpen, setIsConfirmOpen] = useState(false)
   const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null)
   const [data, setData] = useState<PageResponse<Transaction> | null>({
@@ -132,8 +137,12 @@ const Transactions = () => {
     }));
   }
 
-  const onAddNewCategory = async (transaction: TransactionRequest) => {
-    const addedTran = await createTransactionApi(transaction)
+  const onAddNewTransaction = async (transaction: TransactionRequest) => {
+    const addedTran  = await createTransactionApi(transaction) as Transaction
+
+    if (addedTran && addedTran.warning) {
+      setWarning({ isOpen: true, budget: addedTran.warning })
+    }
     
     setData(prevData => {
       if (!prevData) return {
@@ -153,7 +162,7 @@ const Transactions = () => {
     });
   }
 
-  const onEditCategory = async (transaction: TransactionRequest) => {
+  const onEditTransaction = async (transaction: TransactionRequest) => {
     const updatedTran = await updateTransactionApi(transaction.id!, transaction)
 
     setData((prevData) => {
@@ -190,6 +199,12 @@ const Transactions = () => {
     });
   };
 
+  const onScanSuccess = (data: Transaction) => {
+    console.log(data)
+    setSelectedTransaction(data)
+    setIsAddOpen(true)
+  }
+
   useEffect(() => {
     if (request.page > 0) {
       fetchTransactions(true);
@@ -210,8 +225,12 @@ const Transactions = () => {
           <p>Xem lại dòng thời gian tài chính của bạn</p>
         </div>
         <div className="flex items-center gap-3">
+          <InvoiceScanner onScanSuccess={onScanSuccess} />
           <button
-            onClick={() => setIsAddOpen(true)} 
+            onClick={() => {
+              setSelectedTransaction(null)
+              setIsAddOpen(true)
+            }} 
             className="btn-primary flex items-center gap-2 text-sm"
           >
             <Plus size={18} />
@@ -304,9 +323,10 @@ const Transactions = () => {
       )}
 
       <UpsertTransactionModal 
+        initData={selectedTransaction}
         isOpen={isAddOpen} 
         onClose={() => setIsAddOpen(false)} 
-        onSubmit={onAddNewCategory}
+        onSubmit={onAddNewTransaction}
         title="Thêm Giao dịch"
         subtitle="Tạo Giao dịch mới để quản lý tài sản của bạn"
         optionsCategory={dropdownCategory}
@@ -318,7 +338,7 @@ const Transactions = () => {
         initData={selectedTransaction}
         isOpen={isEditOpen} 
         onClose={() => setIsEditOpen(false)} 
-        onSubmit={onEditCategory}
+        onSubmit={onEditTransaction}
         title="Sửa Giao dịch"
         subtitle="Chỉnh sửa thông tin Giao dịch"
         optionsCategory={dropdownCategory}
@@ -335,6 +355,12 @@ const Transactions = () => {
             ? onDeleteTransaction(selectedTransaction)
             : Promise.resolve()
         } 
+      />
+
+      <WarningModal 
+        isOpen={warning.isOpen} 
+        onClose={() =>  setWarning({...warning, isOpen: false})} 
+        budget={warning.budget} 
       />
     </div>
   )

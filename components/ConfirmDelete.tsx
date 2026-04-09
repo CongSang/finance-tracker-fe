@@ -32,7 +32,7 @@ export const ConfirmDelete = ({ isOpen, onClose, title, message, onDelete } : Co
   return (
     <LayoutModalPopup isOpen={isOpen} onClose={onClose}>
       <div className='flex flex-col items-center justify-center text-center'>
-        <div className="w-16 h-16 bg-red-200 rounded-full flex items-center justify-center mb-8 shadow-inner">
+        <div className="w-16 h-16 bg-red-200/40 rounded-full flex items-center justify-center mb-8 shadow-inner">
           <AlertTriangle className="text-red-600 w-8 h-8" />
         </div>
 

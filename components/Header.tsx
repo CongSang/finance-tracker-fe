@@ -29,7 +29,7 @@ export const Header = ({ onOpenSidebar }: HeaderProps) => {
   }
 
   return (
-    <header className="flex justify-between items-center px-4 md:px-8 h-16 sticky top-0 z-40 bg-white backdrop-blur-md border-b border-gray-100">
+    <header className="flex justify-between items-center px-4 md:px-8 h-16 sticky top-0 z-20 bg-white backdrop-blur-md border-b border-gray-100">
       <div>
         <div className="flex items-center gap-3 md:hidden ">
           <button onClick={onOpenSidebar} className="hover:bg-gray-100 p-2 rounded-full transition-colors">

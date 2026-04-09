@@ -51,7 +51,7 @@ export const BudgetCard = ({ index, data, onDelete, onEdit } : BudgetCardProps) 
           </p>
         </div>
         <p className={`text-xs font-medium pt-2 flex items-center`} style={{ color: returnColor(data.status) }}>
-          {data.status === "GOOD" ? <Goal className="w-3.5 h-3.5 mr-1" /> : <AlertCircle className="w-3.5 h-3.5 mr-1" />}
+          <span className='w-4 h-4 mr-2'>{data.status === "GOOD" ? <Goal size={14} /> : <AlertCircle size={14} />}</span>
           {data.adviceMessage}
         </p>
       </div>
