@@ -1,6 +1,6 @@
 import React from 'react'
 import { LayoutModalPopup } from '../LayoutModalPopup'
-import { AlertCircle, AlertTriangle, PartyPopper } from 'lucide-react'
+import { AlertCircle, PartyPopper } from 'lucide-react'
 import { BudgetAnalysis } from '@/types/index'
 import { formatDisplay } from '@/lib/utils'
 

@@ -15,6 +15,8 @@ export default function GlobalError({
 
       <p className="my-4">
         Chúng tôi rất tiếc vì sự gián đoạn này. Vui lòng thử lại.
+        <br/>
+        {error.message}
       </p>
       
       {/* Sử dụng class .btn của bạn tại đây */}

@@ -7,7 +7,6 @@ import { useAuth } from "@/context/AuthContext";
 import { useOutsideClick } from "@/hooks/index";
 import toast from "react-hot-toast";
 import { logoutApi } from "@/services/authService";
-import { motion } from "motion/react";
 import { DropdownPopup } from "./DropdownPopup";
 
 interface HeaderProps {

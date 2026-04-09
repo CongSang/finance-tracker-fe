@@ -45,6 +45,7 @@ export const formatDisplay = (val: string) => {
 };
 
 export function cleanObject<T extends object>(obj: T): Partial<T> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const result: any = {};
   (Object.keys(obj) as Array<keyof T>).forEach((key) => {
     const value = obj[key];

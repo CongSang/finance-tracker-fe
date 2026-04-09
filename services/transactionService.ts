@@ -1,6 +1,5 @@
 import { axiosClient } from "@/lib/index";
 import { PageRequest, TransactionFilter, TransactionRequest } from "@/types/index";
-import axios from "axios";
 
 export const getTransactionsApi = async (request: PageRequest, params: TransactionFilter) => {
   const response = await axiosClient.post('/transactions', request, { params });

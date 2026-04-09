@@ -77,21 +77,30 @@ const Transactions = () => {
   const observer = useRef<IntersectionObserver | null>(null);
 
   const fetchDropdown = async () => {
-    const wallets = await getWalletDropdownApi()
-    setDropdownWallet(wallets?.map((item: Wallet) => {
-              return {
-                value: item.id,
-                label: `${item.name} (Số dư: ${formatDisplay((item.balance.toString()))}đ)`
-              }
-            }) || [])
+    try {
+      const wallets = await getWalletDropdownApi()
+      if (wallets && wallets.length) {
+        setDropdownWallet(wallets.map((item: Wallet) => {
+          return {
+            value: item.id,
+            label: `${item.name} (Số dư: ${formatDisplay(item.balance.toString())}đ)`
+          }
+        }))
+      }
 
-    const categories = await getCategoriesApi()
-    setDropdownCategory(categories?.map((item: Category) => {
-              return {
-                value: item.id,
-                label: `${item.name} (${item.type === 'INCOME' ? 'Thu nhập' : 'Chi tiêu'})`
-              }
-            }) || [])
+      const categories = await getCategoriesApi()
+
+      if (categories && categories.length) {
+      setDropdownCategory(categories?.map((item: Category) => {
+          return {
+            value: item.id,
+            label: `${item.name} (${item.type === 'INCOME' ? 'Thu nhập' : 'Chi tiêu'})`
+          }
+        }))
+      }
+    } catch(error) {
+      console.log("Lỗi: ", error)
+    }
   }
   
   const fetchTransactions = useCallback(async (isLoadMore = false) => {
@@ -113,6 +122,7 @@ const Transactions = () => {
     } finally {
       setLoading(false)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [request])
 
   const lastElementRef = (node: HTMLTableRowElement | null) => {
