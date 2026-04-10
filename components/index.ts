@@ -26,6 +26,7 @@ export * from './transactions/TransactionRow'
 export * from './transactions/UpsertTransactionModal'
 export * from './transactions/WarningModal'
 export * from './transactions/InvoiceScanner'
+export * from './transactions/TransactionFilterBar'
 
 export * from './budgets/BudgetCard'
 export * from './budgets/UpsertBudgetModal'

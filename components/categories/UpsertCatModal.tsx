@@ -1,4 +1,5 @@
-import React, { ChangeEvent, useState, MouseEvent, useEffect } from 'react'
+'use client'
+import { ChangeEvent, useState, MouseEvent, useEffect } from 'react'
 import { Input, LayoutModalPopup } from '@/components/index'
 import { Category } from '@/types/index'
 import { cn, ICON_MAP, toastError, transactions } from '@/lib/index'

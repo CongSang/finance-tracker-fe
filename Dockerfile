@@ -8,10 +8,12 @@ ENV NEXT_PUBLIC_API_BASE_URL=$NEXT_PUBLIC_API_BASE_URL
 COPY package*.json ./
 RUN npm install
 COPY . .
+# RUN npm run build
 
 # Stage 2: Run
 FROM node:24-alpine
 WORKDIR /app
 COPY --from=build /app ./
 EXPOSE 3000
+# CMD ["npm", "start"]
 CMD ["npm", "run", "dev"]

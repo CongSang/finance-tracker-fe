@@ -5,13 +5,13 @@ import { Input } from "@/components/Input"
 import { PiggyBank, Wallet } from "lucide-react"
 import Link from "next/link"
 import { useAuth } from "@/context/AuthContext"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { loginApi } from "@/services/index"
 import { toastError, validateEmail, validatePassword } from "@/lib/index"
 import { useRouter, useSearchParams } from "next/navigation"
 import toast from "react-hot-toast"
 
-const Login = () => {
+const LoginHandle = () => {
   const searchParams = useSearchParams();
   const error = searchParams.get('error');
   const router = useRouter();
@@ -151,4 +151,10 @@ const Login = () => {
   )
 }
 
-export default Login
+export default function Login() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Đang tải...</div>}>
+      <LoginHandle />
+    </Suspense>
+  );
+}

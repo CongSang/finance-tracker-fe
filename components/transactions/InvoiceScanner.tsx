@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useRef, MouseEvent } from 'react';
 import { Camera } from 'lucide-react';
 import { toast } from 'react-hot-toast';

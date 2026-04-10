@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💰 Finance Tracker - Fullstack Financial Tracker (Frontend)
 
-## Getting Started
+A modern personal finance dashboard built with **Next.js 14**. This application features an **AI-powered Invoice Scanner** to help users automate expense tracking with a clean, pastel-themed interface.
 
-First, run the development server:
+## 🚀 Tech Stack
+- **Framework:** Next.js 14 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS (Custom Pastel Palette)
+- **State Management:** React Hooks & Context API
+- **AI Integration:** OCR & AI processing for Invoice Scanning
+- **Auth:** OAuth2 (Google) & JWT integration
+- **Deployment:** Docker & GitHub Actions
 
+## ✨ Key Features
+- **🤖 AI Invoice Scanner:** Upload receipt images to automatically extract Date, Amount, and Category using AI.
+- **📊 Interactive Dashboard:** Real-time visualization of income vs. expenses with dynamic charts.
+- **💸 Transaction Management:** Full CRUD operations with advanced filtering and search.
+- **🔐 Secure Auth:** Social login via Google OAuth2 and secure session handling with Cookies.
+- **📱 Responsive Design:** Fully optimized for mobile, tablet, and desktop views.
+- **🏗️ CI/CD:** Automated build pipelines via GitHub Actions.
+
+## 🛠️ Setup & Installation
+1. **Clone & Install:**
+    ```bash
+    git clone https://github.com/CongSang/finance-tracker-fe.git
+    cd finance-tracker-fe
+    npm install --force
+2. **Environment Variables:** Create a .env.local file
+  ```bash
+  NEXT_PUBLIC_API_URL=http://localhost:8080/api
+  NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_client_id
+
+3. **Run Development:**
+  ```bash
+  npm run dev
+
+## 🐳 Docker Deployment
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+docker build -t finance-tracker-be .
+docker run -p 8080:8080 finance-tracker-be
