@@ -25,16 +25,17 @@ A modern personal finance dashboard built with **Next.js 14**. This application 
     git clone https://github.com/CongSang/finance-tracker-fe.git
     cd finance-tracker-fe
     npm install --force
+
 2. **Environment Variables:** Create a .env.local file
-  ```bash
-  NEXT_PUBLIC_API_URL=http://localhost:8080/api
-  NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_client_id
+    ```bash
+    NEXT_PUBLIC_API_URL=http://localhost:8080/api
+    NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_client_id
 
 3. **Run Development:**
-  ```bash
-  npm run dev
+    ```bash
+    npm run dev
 
 ## 🐳 Docker Deployment
-```bash
-docker build -t finance-tracker-be .
-docker run -p 8080:8080 finance-tracker-be
+  ```bash
+  docker build -t finance-tracker-be .
+  docker run -p 8080:8080 finance-tracker-be
